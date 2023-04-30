@@ -12,7 +12,7 @@ const adminSchema = new Schema({
     type: Boolean,
     default: true,
   },
-  email: {
+  name: {
     type: String,
     unique: true,
     lowercase: true,
@@ -22,12 +22,6 @@ const adminSchema = new Schema({
   password: {
     type: String,
     required: true,
-  },
-  name: { type: String, required: true },
-  surname: { type: String, required: true },
-  photo: {
-    type: String,
-    trim: true,
   },
   createdAt: {
     type: Date,

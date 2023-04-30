@@ -9,9 +9,9 @@ require("dotenv").config({ path: ".variables.env" });
 
 exports.register = async (req, res) => {
   try {
-    let { email, password, passwordCheck, name, surname } = req.body;
+    let { name, password, passwordCheck } = req.body;
 
-    if (!email || !password || !passwordCheck)
+    if (!name || !password || !passwordCheck)
       return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res
@@ -22,22 +22,18 @@ exports.register = async (req, res) => {
         .status(400)
         .json({ msg: "Enter the same password twice for verification." });
 
-    const existingAdmin = await Admin.findOne({ email: email });
+    const existingAdmin = await Admin.findOne({ name: name });
     if (existingAdmin)
       return res
         .status(400)
-        .json({ msg: "An account with this email already exists." });
-
-    if (!name) name = email;
+        .json({ msg: "An account with this name already exists." });
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newAdmin = new Admin({
-      email,
-      password: passwordHash,
       name,
-      surname,
+      password: passwordHash,
     });
     const savedAdmin = await newAdmin.save();
     res.status(200).send({
@@ -45,7 +41,6 @@ exports.register = async (req, res) => {
       admin: {
         id: savedAdmin._id,
         name: savedAdmin.name,
-        surname: savedAdmin.surname,
       },
     });
   } catch (err) {
@@ -59,19 +54,19 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, password } = req.body;
 
     // validate
-    if (!email || !password)
+    if (!name || !password)
       return res.status(400).json({ msg: "Not all fields have been entered." });
 
-    const admin = await Admin.findOne({ email: email });
+    const admin = await Admin.findOne({ name: name });
     // console.log(admin);
     if (!admin)
       return res.status(400).json({
         success: false,
         result: null,
-        message: "No account with this email has been registered.",
+        message: "No account with this name has been registered.",
       });
 
     const isMatch = await bcrypt.compare(password, admin.password);

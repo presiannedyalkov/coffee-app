@@ -5,12 +5,12 @@ export default function AdminForm({ isUpdateForm = false }) {
   return (
     <>
       <Form.Item
-        label="E-mail"
-        name="email"
+        label="Name"
+        name="name"
         rules={[
           {
             required: true,
-            message: "Please input your Email!",
+            message: "Please input your name!",
           },
         ]}
       >
@@ -30,29 +30,6 @@ export default function AdminForm({ isUpdateForm = false }) {
           <Input type="password" autoComplete="off" />
         </Form.Item>
       )}
-
-      <Form.Item
-        label="name"
-        name="name"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input autoComplete="off" />
-      </Form.Item>
-      <Form.Item
-        label="surname"
-        name="surname"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
-      >
-        <Input autoComplete="off" />
-      </Form.Item>
     </>
   );
 }

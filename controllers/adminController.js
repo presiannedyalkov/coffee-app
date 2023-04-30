@@ -64,9 +64,7 @@ exports.profile = async (req, res) => {
     let result = {
       _id: req.admin._id,
       enabled: req.admin.enabled,
-      email: req.admin.email,
       name: req.admin.name,
-      surname: req.admin.surname,
     };
 
     return res.status(200).json({
@@ -101,9 +99,7 @@ exports.read = async (req, res) => {
       let result = {
         _id: tmpResult._id,
         enabled: tmpResult.enabled,
-        email: tmpResult.email,
         name: tmpResult.name,
-        surname: tmpResult.surname,
       };
 
       return res.status(200).json({
@@ -130,21 +126,21 @@ exports.read = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    let { email, password } = req.body;
-    if (!email || !password)
+    let { name, password } = req.body;
+    if (!name || !password)
       return res.status(400).json({
         success: false,
         result: null,
-        message: "Email or password fields they don't have been entered.",
+        message: "name or password fields need to be entered.",
       });
 
-    const existingAdmin = await Admin.findOne({ email: email });
+    const existingAdmin = await Admin.findOne({ name: name });
 
     if (existingAdmin)
       return res.status(400).json({
         success: false,
         result: null,
-        message: "An account with this email already exists.",
+        message: "An account with this name already exists.",
       });
 
     if (password.length < 8)
@@ -171,9 +167,7 @@ exports.create = async (req, res) => {
       result: {
         _id: result._id,
         enabled: result.enabled,
-        email: result.email,
         name: result.name,
-        surname: result.surname,
       },
       message: "Admin document save correctly",
     });
@@ -190,20 +184,20 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    let { email } = req.body;
+    let { name } = req.body;
 
-    if (email) {
-      const existingAdmin = await Admin.findOne({ email: email });
+    if (name) {
+      const existingAdmin = await Admin.findOne({ name: name });
 
       if (existingAdmin._id != req.params.id)
         return res
           .status(400)
-          .json({ message: "An account with this email already exists." });
+          .json({ message: "An account with this name already exists." });
     }
 
     let updates = {
       role: req.body.role,
-      email: req.body.email,
+      name: req.body.name,
     };
 
     // Find document by id and updates with the required fields
@@ -227,9 +221,7 @@ exports.update = async (req, res) => {
       result: {
         _id: result._id,
         enabled: result.enabled,
-        email: result.email,
         name: result.name,
-        surname: result.surname,
       },
       message: "we update this document by this id: " + req.params.id,
     });
@@ -285,9 +277,7 @@ exports.updatePassword = async (req, res) => {
       result: {
         _id: result._id,
         enabled: result.enabled,
-        email: result.email,
         name: result.name,
-        surname: result.surname,
       },
       message: "we update the password by this id: " + req.params.id,
     });
