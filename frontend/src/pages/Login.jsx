@@ -54,17 +54,17 @@ const LoginPage = () => {
                   onFinish={onFinish}
                 >
                   <Form.Item
-                    name="email"
+                    name="name"
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Email!",
+                        message: "Please input your name!",
                       },
                     ]}
                   >
                     <Input
                       prefix={<UserOutlined className="site-form-item-icon" />}
-                      placeholder="admin@demo.com"
+                      placeholder="admin"
                       autoComplete="off"
                     />
                   </Form.Item>
@@ -103,7 +103,6 @@ const LoginPage = () => {
                     >
                       Log in
                     </Button>
-                    Or <a href="">register now!</a>
                   </Form.Item>
                 </Form>
               </div>
