@@ -4,9 +4,6 @@ const { catchErrors } = require("../handlers/errorHandlers");
 const router = express.Router();
 
 const adminController = require("../controllers/adminController");
-const clientController = require("../controllers/clientController");
-
-const leadController = require("../controllers/leadController");
 const productController = require("../controllers/productController");
 
 //_______________________________ Admin management_______________________________
@@ -22,22 +19,6 @@ router
   .route("/admin/password-update/:id")
   .patch(catchErrors(adminController.updatePassword));
 //list of admins ends here
-
-//_____________________________________ API for clients __________________________
-router.route("/client/create").post(catchErrors(clientController.create));
-router.route("/client/read/:id").get(catchErrors(clientController.read));
-router.route("/client/update/:id").patch(catchErrors(clientController.update));
-router.route("/client/delete/:id").delete(catchErrors(clientController.delete));
-router.route("/client/search").get(catchErrors(clientController.search));
-router.route("/client/list").get(catchErrors(clientController.list));
-
-//_____________________________________ API for leads ___________________________
-router.route("/lead/create").post(catchErrors(leadController.create));
-router.route("/lead/read/:id").get(catchErrors(leadController.read));
-router.route("/lead/update/:id").patch(catchErrors(leadController.update));
-router.route("/lead/delete/:id").delete(catchErrors(leadController.delete));
-router.route("/lead/search").get(catchErrors(leadController.search));
-router.route("/lead/list").get(catchErrors(leadController.list));
 
 //_____________________________________ API for products ___________________________
 router.route("/product/create").post(catchErrors(productController.create));
