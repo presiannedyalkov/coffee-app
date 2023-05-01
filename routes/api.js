@@ -4,7 +4,7 @@ const { catchErrors } = require("../handlers/errorHandlers");
 const router = express.Router();
 
 const adminController = require("../controllers/adminController");
-const productController = require("../controllers/productController");
+const coffeeController = require("../controllers/coffeeController");
 
 //_______________________________ Admin management_______________________________
 
@@ -20,16 +20,16 @@ router
   .patch(catchErrors(adminController.updatePassword));
 //list of admins ends here
 
-//_____________________________________ API for products ___________________________
-router.route("/product/create").post(catchErrors(productController.create));
-router.route("/product/read/:id").get(catchErrors(productController.read));
+//_____________________________________ API for coffee ___________________________
+router.route("/coffee/create").post(catchErrors(coffeeController.create));
+router.route("/coffee/read/:id").get(catchErrors(coffeeController.read));
 router
-  .route("/product/update/:id")
-  .patch(catchErrors(productController.update));
+  .route("/coffee/update/:id")
+  .patch(catchErrors(coffeeController.update));
 router
-  .route("/product/delete/:id")
-  .delete(catchErrors(productController.delete));
-router.route("/product/search").get(catchErrors(productController.search));
-router.route("/product/list").get(catchErrors(productController.list));
+  .route("/coffee/delete/:id")
+  .delete(catchErrors(coffeeController.delete));
+router.route("/coffee/search").get(catchErrors(coffeeController.search));
+router.route("/coffee/list").get(catchErrors(coffeeController.list));
 
 module.exports = router;
