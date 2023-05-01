@@ -38,8 +38,8 @@ function Navigation() {
             Home Page
           </Menu.Item>
           <Menu.Item key="3" icon={<FileSyncOutlined />}>
-            <Link to="/product" />
-            Product
+            <Link to="/coffee" />
+            Coffee
           </Menu.Item>
           <Menu.Item key="31" icon={<TeamOutlined />}>
             <Link to="/admin" />
