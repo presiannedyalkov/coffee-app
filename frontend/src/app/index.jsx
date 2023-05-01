@@ -9,6 +9,9 @@ import { Button, Result } from "antd";
 
 import useNetwork from "@/hooks/useNetwork";
 
+import LogRocket from 'logrocket';
+LogRocket.init('zrffli/coffee-app');
+
 function App() {
   const { isOnline: isNetwork } = useNetwork();
 
