@@ -37,9 +37,13 @@ function Navigation() {
             <Link to="/" />
             Home Page
           </Menu.Item>
-          <Menu.Item key="3" icon={<FileSyncOutlined />}>
+          <Menu.Item key="2" icon={<FileSyncOutlined />}>
             <Link to="/coffee" />
             Coffee
+          </Menu.Item>
+          <Menu.Item key="3" icon={<FileSyncOutlined />}>
+            <Link to="/coffee-list" />
+            Coffee List
           </Menu.Item>
           <Menu.Item key="31" icon={<TeamOutlined />}>
             <Link to="/admin" />
