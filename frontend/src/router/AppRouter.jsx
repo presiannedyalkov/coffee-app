@@ -18,9 +18,6 @@ const Coffee = lazy(() =>
 const CoffeeListingPage = lazy(() =>
   import(/*webpackChunkName:'CoffeeListingPage'*/ "@/pages/CoffeeListingPage")
 );
-const CoffeeListingPage = lazy(() =>
-  import(/*webpackChunkName:'CoffeeListingPage'*/ "@/pages/CoffeeListingPage")
-);
 const CoffeeDetailsPage = lazy(() =>
   import(/*webpackChunkName:'CoffeeDetailsPage'*/ "@/pages/CoffeeDetailsPage")
 );
