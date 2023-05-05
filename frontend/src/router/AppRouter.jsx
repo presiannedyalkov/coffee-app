@@ -13,7 +13,10 @@ const Admin = lazy(() =>
 );
 
 const Coffee = lazy(() =>
-  import(/*webpackChunkName:'CoffeePage'*/ "@/pages/Coffee")
+  import(/*webpackChunkName:'Coffee'*/ "@/pages/Coffee")
+);
+const CoffeeListingPage = lazy(() =>
+  import(/*webpackChunkName:'CoffeeListingPage'*/ "@/pages/CoffeeListingPage")
 );
 const CoffeeListingPage = lazy(() =>
   import(/*webpackChunkName:'CoffeeListingPage'*/ "@/pages/CoffeeListingPage")
@@ -36,6 +39,7 @@ export default function AppRouter() {
       <AnimatePresence exitBeforeEnter initial={false}>
         <Switch location={location} key={location.pathname}>
           <PrivateRoute path="/" component={Dashboard} exact />
+          <PrivateRoute component={CoffeeListingPage} path="/coffee-list" exact />
           <PrivateRoute component={Coffee} path="/coffee" exact />
           <PrivateRoute component={CoffeeListingPage} path="/coffee-list" exact />
           <PrivateRoute component={CoffeeDetailsPage}  path="/coffee-list/:coffeeId" exact />
