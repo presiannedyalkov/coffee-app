@@ -1,6 +1,6 @@
 import React from "react";
 
-import ListingPage from "@/components/ListingPage";
+import CoffeeList from "@/components/CoffeeList";
 
 function CoffeeListingPage() {
   const entity = "coffee";
@@ -13,16 +13,9 @@ function CoffeeListingPage() {
   const listingPageTitle = "Coffee List";
   const entityDisplayLabels = ["name"];
 
-  const coffeeAttributes = [
+  const coffeeListAttributes = [
     { title: "Coffee Name", dataIndex: "name" },
     { title: "Type", dataIndex: "type" },
-    { title: "Grind Espresso", dataIndex: "grindEspresso" },
-    { title: "Grind Filter Coffee", dataIndex: "grindFilterCoffee" },
-    { title: "Temperature Espresso", dataIndex: "temperatureEspresso" },
-    { title: "Temperature Filter Coffee", dataIndex: "temperatureFilterCoffee" },
-    { title: "Input Espresso", dataIndex: "inputEspresso" },
-    { title: "Output Espresso", dataIndex: "outputEspresso" },
-    { title: "Ratio", dataIndex: "ratio" },
     { title: "Rating", dataIndex: "rating" },
     { title: "Image", dataIndex: "image" },
     { title: "Price", dataIndex: "price" },
@@ -40,13 +33,13 @@ function CoffeeListingPage() {
     CREATE_ENTITY,
     ADD_NEW_ENTITY,
     UPDATE_ENTITY,
-    coffeeAttributes,
+    coffeeListAttributes,
     listingPageTitle,
     searchConfig,
     entityDisplayLabels,
   };
   return (
-    <ListingPage
+    <CoffeeList
       config={config}
     />
   );
