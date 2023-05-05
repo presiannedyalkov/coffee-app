@@ -15,6 +15,9 @@ const Admin = lazy(() =>
 const Coffee = lazy(() =>
   import(/*webpackChunkName:'CoffeePage'*/ "@/pages/Coffee")
 );
+const CoffeeListingPage = lazy(() =>
+  import(/*webpackChunkName:'CoffeeListingPage'*/ "@/pages/CoffeeListingPage")
+);
 const CoffeeDetailsPage = lazy(() =>
   import(/*webpackChunkName:'CoffeeDetailsPage'*/ "@/pages/CoffeeDetailsPage")
 );
